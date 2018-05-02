@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+<validators>
+    <field name="veryCode">
+        <field-validator type="required">
+            <message>请输入正确的验证码.</message>
+        </field-validator>
+    </field>
+    <field name="user.euUserName">
+        <field-validator type="required">
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euPassword">
+        <field-validator type="required">
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euSex">
+        <field-validator type="required">
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euBirthday">
+        <field-validator type="date">
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euMobile">
+        <field-validator type="regex">
+            <param name="regex"><![CDATA[([1][0-9]{10})]]></param>
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euEmail">
+        <field-validator type="email">
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euAddress">
+        <field-validator type="required">
+            <message></message>
+        </field-validator>
+    </field>
+    <field name="user.euIdentityCode">
+        <field-validator type="int">
+            <message></message>
+        </field-validator>
+    </field>
+
+</validators>

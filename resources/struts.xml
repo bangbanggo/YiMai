@@ -1,0 +1,151 @@
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="user" extends="struts-default" namespace="/" strict-method-invocation="false">
+
+        <!--user action-->
+        <action name="login" class="edu.black.action.UsersAction" method="login">
+            <result name="success" type="redirectAction">index</result>
+            <result name="error">login.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+        <action name="register" class="edu.black.action.UsersAction" method="register">
+            <result>reg-result.jsp</result>
+            <result name="error">register.jsp</result>
+            <result name="input">register.jsp</result>
+        </action>
+        <action name="logout" class="edu.black.action.UsersAction" method="logout">
+            <result name="success" type="redirectAction">index</result>
+        </action>
+
+
+        <!--view page-->
+        <action name="index" class="edu.black.action.PageAction" method="index">
+            <result>index.jsp</result>
+        </action>
+        <action name="productView" class="edu.black.action.PageAction" method="productView">
+            <result>product-view.jsp</result>
+        </action>
+        <action name="allProduct" class="edu.black.action.PageAction" method="allProduct">
+            <result>product-list.jsp</result>
+        </action>
+
+
+
+        <!--redirect-->
+        <action name="manage">
+            <result type="redirectAction">manage/index</result>
+        </action>
+        <action name="">
+            <result type="redirectAction">index</result>
+        </action>
+
+        <!--shopping-->
+        <action name="shopping"  class="edu.black.action.PageAction" method="shopping">
+            <result>shopping.jsp</result>
+            <result name="login" type="redirectAction">login</result>
+        </action>
+        <action name="shopping_*" class="edu.black.action.ShoppingAction" method="{1}">
+        </action>
+
+        <!--order-->
+        <action name="order_submit" class="edu.black.action.PageAction" method="submit">
+            <result name="success">shopping-result.html</result>
+            <result name="error" type="redirectAction">shopping</result>
+        </action>
+        <action name="order_submit" class="edu.black.action.PageAction" method="submit">
+            <result name="success">shopping-result.html</result>
+            <result name="error" type="redirectAction">shopping</result>
+        </action>
+
+
+        <!--comment-->
+        <action name="comment" class="edu.black.action.PageAction" method="comment">
+            <result>guestbook.jsp</result>
+        </action>
+        <action name="commentPreUpdate" class="edu.black.action.PageAction" method="">
+            <result>comment-modify.jsp</result>
+        </action>
+
+        <action name="comment_*" class="edu.black.action.CommentAction" method="{1}">
+            <result name="success" type="redirectAction">comment</result>
+        </action>
+    </package>
+
+    <package name="json" extends="json-default" namespace="/" strict-method-invocation="false">
+        <action name="json_getuserinfo" class="edu.black.action.JsonAction" method="getUserInfo">
+            <result type="json"/>
+        </action>
+    </package>
+    <package name="system" extends="struts-default" namespace="/manage" strict-method-invocation="false">
+        <action name="index" class="edu.black.action.ManagePageAction" method="in   dex">
+            <result>index.jsp</result>
+        </action>
+
+
+        <!--用户管理-->
+        <action name="userManage" class="edu.black.action.ManagePageAction" method="userManage">
+            <result>user.jsp</result>
+        </action>
+        <action name="addUser" class="edu.black.action.ManageAction" method="addUser">
+            <result name="success" type="redirectAction">userManage</result>
+            <result name="error">user-add.jsp</result>
+            <result name="input">user-add.jsp</result>
+        </action>
+        <action name="deleteUser" class="edu.black.action.ManageAction" method="deleteUser">
+            <result name="success" type="redirectAction">userManage</result>
+        </action>
+        <action name="updateUser" class="edu.black.action.ManageAction" method="updateUser">
+            <result>manage-result.jsp</result>
+        </action>
+        <action name="preupdate" class="edu.black.action.ManagePageAction" method="preupdate">
+            <result name="success">user-modify.jsp</result>
+        </action>
+
+        <!--分类管理-->
+        <action name="categoryManage" class="edu.black.action.ManagePageAction" method="categoryManage">
+            <result>productClass.jsp</result>
+        </action>
+        <action name="categoryPreUpdate"  class="edu.black.action.ManagePageAction" method="categoryPreUpdate">
+            <result>productClass-modify.jsp</result>
+        </action>
+        <action name="categoryPreAdd"  class="edu.black.action.ManagePageAction" method="categoryPreAdd">
+            <result>productClass-add.jsp</result>
+        </action>
+        <action name="category_*" class="edu.black.action.CategoryaAction" method="{1}">
+            <result name="success" type="redirectAction">categoryManage</result>
+            <result name="error" type="redirectAction">categoryManage</result>
+        </action>
+
+        <!--商品-->
+        <action name="productManage" class="edu.black.action.ManagePageAction" method="productManage">
+            <result>product.jsp</result>
+        </action>
+        <action name="productPreAdd" class="edu.black.action.ManagePageAction" method="productPreAdd">
+            <result>product-add.jsp</result>
+        </action>
+        <action name="productPreUpdate" class="edu.black.action.ManagePageAction" method="productPreUpdate">
+            <result>product-modify.jsp</result>
+        </action>
+        <action name="product_*" class="edu.black.action.ProductAction" method="{1}">
+            <result type="redirectAction">productManage</result>
+            <result name="input" type="redirectAction">productPreAdd</result>
+        </action>
+
+        <!--news-->
+        <action name="newsManage" class="edu.black.action.ManagePageAction" method="newsManage">
+            <result>news.jsp</result>
+        </action>
+        <action name="newsPreUpdate" class="edu.black.action.ManagePageAction" method="newsPreUpdate">
+            <result>news-modify.jsp</result>
+        </action>
+        <action name="newsPreAdd" class="edu.black.action.ManagePageAction" method="newsPreUpdate">
+            <result>news-add.jsp</result>
+        </action>
+        <action name="news_*" class="edu.black.action.NewsAction" method="{1}">
+            <result type="redirectAction">newsManage</result>
+            <result name="error">newsManage</result>
+        </action>
+    </package>
+</struts>
